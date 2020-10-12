@@ -16,8 +16,8 @@ jobs:
       - name: Default test
         run: | 
         npm install -D @percy/script
-        percy/snapshot-action@v0.1.1
-       - with:
+      - uses: percy/snapshot-action@v0.1.1
+        with:
           build-directory: "./"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
