@@ -10,6 +10,7 @@
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
+    "@percy/agent": "^0.28.3",
     "@percy/script": "^1.1.0"
   }
 }
