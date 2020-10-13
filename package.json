@@ -1,0 +1,16 @@
+{
+  "name": "percy-test",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "@percy/agent": "^0.28.3",
+    "@percy/script": "^1.1.0"
+  }
+}
