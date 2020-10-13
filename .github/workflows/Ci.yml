@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +16,6 @@ jobs:
       - name: Default test
         uses: percy/snapshot-action@v0.1.1
         with:
-          build-directory: "./gridsome"
+          build-directory: "./percy-test"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
