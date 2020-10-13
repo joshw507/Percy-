@@ -6,16 +6,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
       - name: npm install, build
         run: |
           cd percy-test
           npm install
           npm run build
-      - name: Default test
-        uses: percy/snapshot-action@v0.1.1
+      - name: Percy test
+        uses: percy/exec-action@master
         with:
-          build-directory: "./percy-test"
+          command: "node snapshots.js"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
