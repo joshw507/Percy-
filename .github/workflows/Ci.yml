@@ -13,9 +13,8 @@ jobs:
           cd percy-test
           npm install
           npm run build
-      - name: Default test
-        uses: percy/snapshot-action@v0.1.1
-        with:
-          build-directory: "percy-test"
+       - name: Percy Test
+         uses: percy/storybook-action@v0.1.2
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          
