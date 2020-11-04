@@ -3,6 +3,7 @@ describe("Integration test with visual testing", function() {
     // Load the page or perform any other interactions with the app.
     cy.visit("http://localhost:8081/");
 
+    cy.screenshot();
     cy.percySnapshot();
   });
 });
