@@ -17,7 +17,6 @@ jobs:
         uses: percy/exec-action@v0.3.0
         with:
           command: "cypress run"
-        with:
           build-directory: "percy-test"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
