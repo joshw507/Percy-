@@ -7,10 +7,12 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "cypress": "^5.5.0",
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
     "@percy/agent": "^0.28.3",
+    "@percy/cypress": "^2.3.2",
     "@percy/script": "^1.1.0"
   }
 }

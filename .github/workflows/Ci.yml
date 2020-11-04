@@ -14,7 +14,7 @@ jobs:
           npm install
           npm run build
       - name: Default test
-        uses: percy/snapshot-action@v0.1.1
+        uses: percy exec -- cypress run
         with:
           build-directory: "percy-test"
         env:
