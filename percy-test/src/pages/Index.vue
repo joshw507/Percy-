@@ -15,6 +15,8 @@
       <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
     </p>
 
+
+    <p>test 123</p>
   </Layout>
 </template>
 
@@ -29,5 +31,6 @@ export default {
 <style>
 .home-links a {
   margin-right: 1rem;
+
 }
 </style>
