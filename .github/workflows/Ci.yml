@@ -6,13 +6,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1.0.0
-      - name: Install
-        run: yarn
+     - name: npm install, build
+        run: |
+          cd percy-test
+          npm install
+          npm run build
       - name: Percy Test
         uses: percy/exec-action@v0.3.0
         with:
           command: "cypress run"
-          custom-command: "./percy-test/cypress/home.spec.js"
+          custom-command: "percy-test/cypress/home.spec.js"
           exec-flags: "-t 150 -h cdn.example.com"
           verbose: true
           silence: false
