@@ -1,18 +1,17 @@
 name: Windows CI
 on: [push, pull_request]
 jobs:
-  build:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
-      - name: Install
-        run: yarn
-      - name: Build
-        run: yarn build
-      - name: Percy Test
-        uses: percy/exec-action@master
+        uses: actions/checkout@v1
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          command: "node home.spec.js"
+          working-directory: packages/web-take-action
+          build: npm run build
+          start: npx http-server ./dist
+          wait-on: http://localhost:8080
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
