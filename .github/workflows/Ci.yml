@@ -11,8 +11,8 @@ jobs:
       - name: npm install, build
         run: |
           cd percy-test
-          npm install
-          npm run build
+          npm i
+          gridsome develop
      - name: Percy Test
         uses: percy/exec-action@v0.1.1
         with:
