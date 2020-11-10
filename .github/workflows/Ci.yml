@@ -13,10 +13,9 @@ jobs:
           cd percy-test
           npm install
           npm run build
-      - name: Percy Test
-        uses: percy/exec-action@v0.3.0
+     - name: Percy Test
+        uses: percy/exec-action@v0.1.1
         with:
-          command: "percy exec -- cypress run"
-          build-directory: "percy-test"
+          command: "cypress run"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
