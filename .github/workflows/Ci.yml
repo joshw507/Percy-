@@ -1,17 +1,21 @@
-name: Windows CI
+name: CI
 on: [push, pull_request]
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: actions/checkout@master
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+      - name: npm install, build
+        run: |
+          cd percy-test
+          npm install
+          npm run build
+      - name: Default test
+        uses: percy/snapshot-action@v0.1.1
         with:
-          working-directory: packages/web-take-action
-          build: npm run build
-          start: npx http-server ./dist
-          wait-on: http://localhost:8080
+          build-directory: "percy-test"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
