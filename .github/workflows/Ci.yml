@@ -1,4 +1,4 @@
-
+name: CI
 on: [push, pull_request]
   jobs:
   cypress-run:
@@ -11,8 +11,7 @@ on: [push, pull_request]
         env:
             PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
         with:
-          working-directory: percy-test
-          install: npm i
+          working-directory: packages/web-take-action
           build: npm run build
           start: npx http-server ./dist
           wait-on: http://localhost:8080
