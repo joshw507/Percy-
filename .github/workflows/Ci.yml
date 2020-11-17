@@ -1,3 +1,4 @@
+
 name: End-to-end tests
 on: [push, pull_request]
 jobs:
@@ -14,18 +15,21 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
+         run: |
           cd percy-test
           npm ci
-          npm run build
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
           install: false
-          start: npm start
+          start: npm run build
           wait-on: 'http://localhost:8080/'
           record: true
           parallel: true
           command-prefix: 'percy exec -- npx'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: 3
+        
