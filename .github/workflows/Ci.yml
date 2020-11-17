@@ -12,7 +12,7 @@ jobs:
         run: |
           cd percy-test
           npm install
-          npm run build
+          gridsome build 
       - name: Default test
         uses: percy/exec-action@v0.3.0
         with:
