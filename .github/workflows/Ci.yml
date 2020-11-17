@@ -1,21 +1,31 @@
-name: CI
+name: End-to-end tests
 on: [push, pull_request]
 jobs:
-  build:
+  cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4, 5, 6]
     steps:
       - name: Checkout
-        uses: actions/checkout@master
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-      - name: npm install, build
-        run: |
-          cd percy-test
-          npm install
-          npm run build
-      - name: Default test
-       uses: percy/exec-action@master
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
         with:
-          command: "npx cypress run"
+          node-version: '10.x'
+      - name: Install dependencies
+          cd percy-test
+          npm ci
+          npm run build
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          install: false
+          start: npm start
+          wait-on: 'http://localhost:8080/'
+          record: true
+          parallel: true
+          command-prefix: 'percy exec -- npx'
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
