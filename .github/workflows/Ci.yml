@@ -16,6 +16,6 @@ jobs:
       - name: Default test
         uses: percy/exec-action@v0.3.0
         with:
-             command: "npx cypress run"
+             command: "percy exec -- cypress run"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
