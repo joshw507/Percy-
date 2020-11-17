@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '10.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies
+      - name: npm install, build 
          run: |
           cd percy-test
           npm ci
