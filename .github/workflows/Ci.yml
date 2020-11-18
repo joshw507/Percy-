@@ -19,3 +19,4 @@ jobs:
           build-directory: "percy-test"
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
